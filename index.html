@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Utama ASTS - SMP Angkasa Husein</title>
+    <!-- Font Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
@@ -34,9 +35,13 @@
             padding: 40px 20px;
             position: relative;
             overflow-x: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
-        /* Latar Belakang Grid */
+        /* Latar Belakang Grid Geometric */
         body::before {
             content: '';
             position: fixed; 
@@ -123,6 +128,7 @@
             flex-direction: column;
             align-items: center;
             position: relative;
+            cursor: pointer;
         }
 
         .card-icon {
@@ -207,10 +213,10 @@
 
         <div class="portal-prompt">Pilih Tingkat Kelas Untuk Memulai Ujian:</div>
 
-        <!-- Kartu Pilihan Kelas dengan Link Langsung GitHub Pages -->
+        <!-- Kartu Pilihan Kelas dengan URL Terenkripsi Base64 -->
         <div class="class-grid">
             <!-- Pilihan Kelas 7 -->
-            <a href="https://smp-hsn.github.io/ASTS1Ganjil7/" class="class-card card-k7">
+            <a href="javascript:void(0)" onclick="bukaUjian('aHR0cHM6Ly9zbXAtaHNuLmdpdGh1Yi5pby9BU1RTMUdhbmppbDcv')" class="class-card card-k7">
                 <div class="card-icon">🚀</div>
                 <div class="card-title">KELAS VII</div>
                 <div class="card-desc">Asesmen Kelas 7</div>
@@ -218,7 +224,7 @@
             </a>
 
             <!-- Pilihan Kelas 8 -->
-            <a href="https://smp-hsn.github.io/ASTS1Ganjil8/" class="class-card card-k8">
+            <a href="javascript:void(0)" onclick="bukaUjian('aHR0cHM6Ly9zbXAtaHNuLmdpdGh1Yi5pby9BU1RTMUdhbmppbDgv')" class="class-card card-k8">
                 <div class="card-icon">⚡</div>
                 <div class="card-title">KELAS VIII</div>
                 <div class="card-desc">Asesmen Kelas 8</div>
@@ -226,7 +232,7 @@
             </a>
 
             <!-- Pilihan Kelas 9 -->
-            <a href="https://smp-hsn.github.io/ASTS1Ganjil9/" class="class-card card-k9">
+            <a href="javascript:void(0)" onclick="bukaUjian('aHR0cHM6Ly9zbXAtaHNuLmdpdGh1Yi5pby9BU1RTMUdhbmppbDkv')" class="class-card card-k9">
                 <div class="card-icon">🎓</div>
                 <div class="card-title">KELAS IX</div>
                 <div class="card-desc">Asesmen Kelas 9</div>
@@ -238,6 +244,40 @@
     <footer>
         © SMP Angkasa Husein — Sistem Asesmen Sumatif Tengah Semester
     </footer>
+
+    <!-- SCRIPT PROTEKSI DAN PENGALIHAN UTAMA -->
+    <script>
+        // 1. Fungsi Dekripsi Base64 dan Buka URL Ujian
+        function bukaUjian(encodedUrl) {
+            var targetUrl = atob(encodedUrl);
+            window.location.href = targetUrl;
+        }
+
+        // 2. Proteksi Mematikan Klik Kanan (Context Menu)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 3. Proteksi Mematikan Tombol Pintas Keyboard (F12, Inspect, View Source, Save)
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.keyCode === 123 || // F12
+                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || // Ctrl+Shift+I/J/C
+                (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83)) // Ctrl+U / Ctrl+S
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // 4. Mencegah Sorot / Seleksi Teks & Drag-Drop
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+    </script>
 
 </body>
 </html>

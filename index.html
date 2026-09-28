@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Utama ASTS - SMP Angkasa Husein</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-gold: #f59e0b;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--bg-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Latar Belakang Grid */
+        body::before {
+            content: '';
+            position: fixed; 
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none; 
+            z-index: 0;
+        }
+
+        .container {
+            position: relative; 
+            z-index: 10;
+            width: 100%; 
+            max-width: 960px;
+            text-align: center;
+            margin: auto 0;
+        }
+
+        /* Header Portal */
+        .school-header { 
+            margin-bottom: 32px; 
+        }
+
+        .school-subtitle {
+            font-size: 13px; 
+            font-weight: 700; 
+            color: var(--accent-gold);
+            letter-spacing: 0.15em; 
+            text-transform: uppercase; 
+            margin-bottom: 8px;
+        }
+
+        .school-title {
+            font-size: 36px; 
+            font-weight: 800; 
+            letter-spacing: -0.02em;
+            text-transform: uppercase; 
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .school-address { 
+            font-size: 13px; 
+            color: var(--text-muted); 
+            font-weight: 500; 
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            margin: 28px auto; 
+            max-width: 500px;
+        }
+
+        .portal-prompt {
+            font-size: 16px; 
+            font-weight: 600; 
+            margin-bottom: 32px;
+            color: #e2e8f0;
+        }
+
+        /* Grid Kartu Kelas */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .class-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .card-icon {
+            font-size: 44px; 
+            margin-bottom: 16px; 
+        }
+
+        .card-title {
+            font-size: 22px; 
+            font-weight: 800; 
+            margin-bottom: 6px; 
+        }
+
+        .card-desc {
+            font-size: 12px; 
+            color: var(--text-muted); 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em; 
+            margin-bottom: 24px;
+        }
+
+        .card-btn {
+            padding: 10px 20px; 
+            border-radius: 12px; 
+            font-size: 12px; 
+            font-weight: 700;
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        /* Efek Hover Spesifik Tiap Kelas */
+        .card-k7:hover { 
+            border-color: #38bdf8; 
+            transform: translateY(-6px); 
+            box-shadow: 0 12px 28px rgba(56, 189, 248, 0.18); 
+        }
+        .card-k7 .card-btn { background: rgba(56, 189, 248, 0.12); color: #38bdf8; }
+        .card-k7:hover .card-btn { background: #38bdf8; color: #0f172a; }
+
+        .card-k8:hover { 
+            border-color: #a855f7; 
+            transform: translateY(-6px); 
+            box-shadow: 0 12px 28px rgba(168, 85, 247, 0.18); 
+        }
+        .card-k8 .card-btn { background: rgba(168, 85, 247, 0.12); color: #c084fc; }
+        .card-k8:hover .card-btn { background: #a855f7; color: #ffffff; }
+
+        .card-k9:hover { 
+            border-color: #3b82f6; 
+            transform: translateY(-6px); 
+            box-shadow: 0 12px 28px rgba(59, 130, 246, 0.18); 
+        }
+        .card-k9 .card-btn { background: rgba(59, 130, 246, 0.12); color: #60a5fa; }
+        .card-k9:hover .card-btn { background: #3b82f6; color: #ffffff; }
+
+        footer {
+            position: relative; 
+            z-index: 10;
+            font-size: 11px; 
+            color: var(--text-muted); 
+            font-weight: 600;
+            letter-spacing: 0.1em; 
+            text-transform: uppercase;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Identitas Sekolah & Ujian -->
+        <div class="school-header">
+            <div class="school-subtitle">SMP Angkasa Husein Sastranegara</div>
+            <div class="school-title">Portal Ujian Online (ASTS)</div>
+            <div class="school-address">Jl. Pajajaran No. 151, Bandung</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="portal-prompt">Pilih Tingkat Kelas Untuk Memulai Ujian:</div>
+
+        <!-- Kartu Pilihan Kelas dengan Link Langsung GitHub Pages -->
+        <div class="class-grid">
+            <!-- Pilihan Kelas 7 -->
+            <a href="https://smp-hsn.github.io/ASTS1Ganjil7/" class="class-card card-k7">
+                <div class="card-icon">🚀</div>
+                <div class="card-title">KELAS VII</div>
+                <div class="card-desc">Asesmen Kelas 7</div>
+                <div class="card-btn">Masuk Ruang Ujian →</div>
+            </a>
+
+            <!-- Pilihan Kelas 8 -->
+            <a href="https://smp-hsn.github.io/ASTS1Ganjil8/" class="class-card card-k8">
+                <div class="card-icon">⚡</div>
+                <div class="card-title">KELAS VIII</div>
+                <div class="card-desc">Asesmen Kelas 8</div>
+                <div class="card-btn">Masuk Ruang Ujian →</div>
+            </a>
+
+            <!-- Pilihan Kelas 9 -->
+            <a href="https://smp-hsn.github.io/ASTS1Ganjil9/" class="class-card card-k9">
+                <div class="card-icon">🎓</div>
+                <div class="card-title">KELAS IX</div>
+                <div class="card-desc">Asesmen Kelas 9</div>
+                <div class="card-btn">Masuk Ruang Ujian →</div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        © SMP Angkasa Husein — Sistem Asesmen Sumatif Tengah Semester
+    </footer>
+
+</body>
+</html>
